@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_book_path(@book) %> |
+<%= link_to 'Back', books_path %>
+<div class="row">
+<strong><%= @book.name%></strong>
+<p><strong>Author: </strong><%= @book.author.name%></p>
+<p><strong>Genre: </strong><%= @book.genre%></p>
+</div>
+<div class="row">
+	<p><strong><%= @book.short_desc%></strong></p>
+</div>
+<div class="row">
+	<p><strong>Detailed Description: </strong><%= @book.long_desc%></p>
+</div>
+
+<% if @book.reviews.size > 0 %>
+  <h2>Reviews</h2>
+  <% for review in @book.reviews %>
+    <h3><%= review.reviewer_name %> <%= review.stars%></h3>
+    <p><%= review.review_title %>
+    	<%= review.review_desc %>
+    </p>
+  <% end %>
+<% end %>
+
+<h2>New review</h2>
+
+<%= form_for [@book, Review.new] do |f| %>
+  <p><%= f.label :reviewer_name %> <%= f.text_field :reviewer_name %></p>
+  <p><%= f.label :stars %> <%= f.text_field :stars%></p>
+  <p><%= f.label :review_title %> <%= f.text_field :review_title%></p>
+  <p><%= f.label :review_desc %> <%= f.text_area :review_desc, :rows => 10 %></p>
+  <p><%= f.submit %></p>
+<% end %>

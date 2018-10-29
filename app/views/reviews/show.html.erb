@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_review_path(@review) %> |
+<%= link_to 'Back', reviews_path %>
+<div class="row">
+<strong><%= @review.reviewer_name%></strong>
+<p><strong>Stars: </strong><%= @review.stars%></p>
+</div>
+<div class="row">
+	<p><strong><%= @review.review_title%></strong></p>
+</div>
+<div class="row">
+	<p><strong>Detailed Description: </strong><%= @review.review_desc%></p>
+</div>
